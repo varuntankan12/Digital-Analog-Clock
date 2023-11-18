@@ -1,0 +1,381 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+}
+
+.main {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-color: #c9c4a3;
+}
+
+.clockcontainer {
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.clockcircle {
+    position: relative;
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+    border: 6px solid #aef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.numbers {
+    position: relative;
+    rotate: -90deg;
+}
+
+.number {
+    position: absolute;
+    font-size: 28px;
+    font-weight: 900;
+    rotate: 90deg;
+}
+
+.ticks {
+    position: relative;
+    rotate: -90deg;
+}
+
+.tick {
+    position: absolute;
+    height: 2px;
+    width: 6px;
+    background-color: #000;
+    border-radius: px;
+}
+
+.hour {
+    position: absolute;
+    height: 130px;
+    width: 15px;
+    transform: translateY(-50%);
+    z-index: 9;
+    transform-origin: bottom center;
+    animation: rotate .7s linear .5s;
+    transition: all 1s ease;
+}
+
+.hour::before {
+    content: "";
+    height: 30px;
+    width: 28px;
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+    background-color: #000;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-49%, -96%);
+}
+
+.hour::after {
+    content: "";
+    height: 30px;
+    width: 30px;
+    background-color: #000;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: -50%;
+    transform: translate(0, 50%);
+}
+
+.hourleft {
+    position: absolute;
+    height: 130px;
+    width: 15px;
+    background-color: #000;
+    transform: rotate(3deg);
+    transform-origin: bottom center;
+}
+
+.hourright {
+    position: absolute;
+    height: 130px;
+    width: 15px;
+    background-color: #000;
+    transform: rotate(-3deg);
+    transform-origin: bottom center;
+}
+
+.minute {
+    position: absolute;
+    height: 150px;
+    width: 11px;
+    transform: translateY(-50%);
+    z-index: 99;
+    transform-origin: bottom center;
+    animation: rotate .8s linear .3s;
+    transition: all 1s ease;
+}
+
+.minute::before {
+    content: "";
+    height: 40px;
+    width: 20.5px;
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-48%, -98%);
+}
+
+.minute::after {
+    content: "";
+    height: 22px;
+    width: 22px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: -50%;
+    transform: translate(0, 50%);
+}
+
+.minuteleft {
+    position: absolute;
+    height: 150px;
+    width: 11px;
+    background-color: #fff;
+    transform: rotate(2deg);
+    transform-origin: bottom center;
+}
+
+.minuteright {
+    position: absolute;
+    height: 150px;
+    width: 11px;
+    background-color: #fff;
+    transform: rotate(-2deg);
+    transform-origin: bottom center;
+}
+
+.second {
+    position: absolute;
+    height: 200px;
+    width: 4px;
+    transform: translateY(-50%);
+    z-index: 999;
+    background-color: #aef;
+    transform-origin: bottom center;
+    animation: rotate 1s linear;
+}
+
+.second::after {
+    content: "";
+    height: 12px;
+    width: 12px;
+    background-color: #aef;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    transform: translate(0, 50%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.clockmanager {
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.datecontainer {
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: rgba(153, 147, 114, 0.403);
+    color: #000;
+    font-weight: 600;
+    font-size: 24px;
+    border-radius: 12px;
+}
+
+.timecontainer {
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: rgba(153, 147, 114, 0.403);
+    color: #000;
+    font-weight: 600;
+    font-size: 45px;
+    border-radius: 12px;
+}
+
+.amorpm {
+    padding: 18px;
+    padding-left: 26px;
+    padding-right: 26px;
+    background-color: rgba(153, 147, 114, 0.403);
+    color: #000;
+    font-weight: 600;
+    font-size: 43px;
+    border-radius: 12px;
+    margin-left: 15px;
+}
+
+
+
+
+
+@media(max-width:1024px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .clockcontainer {
+        height: auto;
+        width: 100vw;
+        margin-top: 6vw;
+    }
+
+    .clockmanager {
+        height: auto;
+        width: 100vw;
+        margin-top: 10vw;
+    }
+}
+
+@media(max-width:540px) {
+    .clockcircle {
+        height: 350px;
+        width: 350px;
+
+    }
+
+    .hour {
+        height: 80px;
+        width: 10px;
+    }
+
+    .hour::before {
+        height: 20px;
+        width: 17px;
+    }
+
+    .hour::after {
+        height: 20px;
+        width: 20px;
+    }
+
+    .hourleft {
+        height: 80px;
+        width: 10px;
+    }
+
+    .hourright {
+        height: 80px;
+        width: 10px;
+    }
+
+
+    .minute {
+        height: 100px;
+        width: 8px;
+        transform: translate(4%, -50%);
+    }
+
+    .minute::before {
+        height: 28px;
+        width: 14.5px;
+        transform: translate(-50%, -95%);
+    }
+
+    .minute::after {
+        height: 15px;
+        width: 15px;
+        left: -40%;
+        transform: translate(0, 50%);
+    }
+
+    .minuteleft {
+        height: 100px;
+        width: 8px;
+    }
+
+    .minuteright {
+        height: 100px;
+        width: 8px;
+    }
+
+    .second {
+        height: 140px;
+        width: 3px;
+
+    }
+
+    .second::after {
+        height: 9px;
+        width: 9px;
+    }
+
+    .datecontainer {
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-weight: 600;
+        font-size: 20px;
+        border-radius: 10px;
+    }
+
+    .timecontainer {
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-weight: 600;
+        font-size: 32px;
+        border-radius: 10px;
+    }
+
+    .amorpm {
+        padding: 9px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-weight: 600;
+        font-size: 30px;
+        border-radius: 10px;
+        margin-left: 8px;
+    }
+
+}
+
+@keyframes rotate {
+    0% {
+        transform: translateY(-50%) rotate(0deg);
+        transform-origin: bottom center;
+    }
+
+    100% {
+        transform: translateY(-50%) rotate(360deg);
+        transform-origin: bottom center;
+    }
+}
