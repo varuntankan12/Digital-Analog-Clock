@@ -5,11 +5,35 @@
     font-family: cursive;
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .main {
     min-height: 100vh;
     width: 100vw;
     display: flex;
     background-color: #c9c4a3;
+}
+
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #000000bc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #cfcdcd;
+    font-size: 10vw;
+    font-weight: 600;
+    z-index: 9999;
+}
+
+.popup p {
+    margin: 2vw;
 }
 
 .clockcontainer {
@@ -57,15 +81,24 @@
     border-radius: px;
 }
 
+.darktick {
+    position: absolute;
+    height: 2px;
+    width: 6px;
+    background-color: #fff;
+    border-radius: px;
+}
+
 .hour {
     position: absolute;
+    background-color: #000;
     height: 130px;
     width: 15px;
     transform: translateY(-50%);
     z-index: 9;
     transform-origin: bottom center;
     animation: rotate .7s linear .5s;
-    transition: all 1s ease;
+    transition: transform 1s ease;
 }
 
 .hour::before {
@@ -73,7 +106,7 @@
     height: 30px;
     width: 28px;
     clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
-    background-color: #000;
+    background-color: inherit;
     position: absolute;
     top: 0;
     left: 50%;
@@ -84,7 +117,7 @@
     content: "";
     height: 30px;
     width: 30px;
-    background-color: #000;
+    background-color: inherit;
     border-radius: 50%;
     position: absolute;
     bottom: 0;
@@ -96,7 +129,7 @@
     position: absolute;
     height: 130px;
     width: 15px;
-    background-color: #000;
+    background-color: inherit;
     transform: rotate(3deg);
     transform-origin: bottom center;
 }
@@ -105,7 +138,7 @@
     position: absolute;
     height: 130px;
     width: 15px;
-    background-color: #000;
+    background-color: inherit;
     transform: rotate(-3deg);
     transform-origin: bottom center;
 }
@@ -114,11 +147,12 @@
     position: absolute;
     height: 150px;
     width: 11px;
+    background-color: #fff;
     transform: translateY(-50%);
     z-index: 99;
     transform-origin: bottom center;
     animation: rotate .8s linear .3s;
-    transition: all 1s ease;
+    transition: transform 1s ease;
 }
 
 .minute::before {
@@ -126,7 +160,7 @@
     height: 40px;
     width: 20.5px;
     clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
-    background-color: #fff;
+    background-color: inherit;
     position: absolute;
     top: 0;
     left: 50%;
@@ -137,7 +171,7 @@
     content: "";
     height: 22px;
     width: 22px;
-    background-color: #fff;
+    background-color: inherit;
     border-radius: 50%;
     position: absolute;
     bottom: 0;
@@ -149,7 +183,7 @@
     position: absolute;
     height: 150px;
     width: 11px;
-    background-color: #fff;
+    background-color: inherit;
     transform: rotate(2deg);
     transform-origin: bottom center;
 }
@@ -158,7 +192,7 @@
     position: absolute;
     height: 150px;
     width: 11px;
-    background-color: #fff;
+    background-color: inherit;
     transform: rotate(-2deg);
     transform-origin: bottom center;
 }
@@ -178,7 +212,7 @@
     content: "";
     height: 12px;
     width: 12px;
-    background-color: #aef;
+    background-color: inherit;
     border-radius: 50%;
     position: absolute;
     bottom: 0;
@@ -186,6 +220,17 @@
     transform: translate(0, 50%);
 }
 
+.second::before {
+    content: "";
+    height: 30px;
+    width: 4px;
+    background-color: #aef;
+    border-radius: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(0, 100%);
+}
 
 
 
@@ -213,7 +258,7 @@
     padding: 20px;
     padding-left: 30px;
     padding-right: 30px;
-    background-color: rgba(153, 147, 114, 0.403);
+    background-color: #99937267;
     color: #000;
     font-weight: 600;
     font-size: 24px;
@@ -224,7 +269,7 @@
     padding: 20px;
     padding-left: 30px;
     padding-right: 30px;
-    background-color: rgba(153, 147, 114, 0.403);
+    background-color: #99937267;
     color: #000;
     font-weight: 600;
     font-size: 45px;
