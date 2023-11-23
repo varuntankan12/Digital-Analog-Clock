@@ -20,7 +20,7 @@ function App() {
     const [digitaldate, setDigitalDate] = useState("DD-MM-YYYY");
     const [darkmode, setDarkMode] = useState(true);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const [soundplayed, setSoundPlayed] = useState(false);
+    const [muted, setMuted] = useState(false);
 
     const monthObj = {
         1: "Jan",
@@ -37,12 +37,14 @@ function App() {
         12: "Dec"
     };
 
+    const formatTimeComponent = (component) => (component > 9 ? component : `0${component}`);
+
     const handleResize = () => {
         setWindowWidth(window.innerWidth);
     };
 
     const playSound = () => {
-        setSoundPlayed(true);
+        setMuted(false);
         const audio = new Audio();
         audio.src = tick;
         audio.oncanplaythrough = (event) => {
@@ -120,13 +122,21 @@ function App() {
             const rotateminutehand = 6 * minutes;
             const rotatesecondhand = 6 * seconds;
 
+            rotatehourhand === 0 ? hourstick.style.transition = "none" : hourstick.style.transition = "transform 1s ease";
+            rotateminutehand === 0 ? minutstick.style.transition = "none" : minutstick.style.transition = "transform 1s ease";
+
             hourstick.style.transform = `translateY(-50%) rotate(${rotatehourhand}deg)`;
             minutstick.style.transform = `${windowWidth > 540 ? "translateY(-50%)" : "translate(-4%,-50%)"} rotate(${rotateminutehand}deg)`;
             secondstick.style.transform = `translateY(-50%) rotate(${rotatesecondhand}deg)`;
 
-            setDigitalTime(`${hours > 12 ? ((hours % 12 || 12) > 9 ? (hours % 12 || 12) : "0" + (hours % 12 || 12)) : (hours > 9 ? hours : "0" + hours)} : ${minutes > 9 ? minutes : "0" + minutes} : ${seconds > 9 ? seconds : "0" + seconds}`);
+            const formattedHours = formatTimeComponent(hours % 12 === 0 ? 12 : hours % 12);
+            const formattedMinutes = formatTimeComponent(minutes);
+            const formattedSeconds = formatTimeComponent(seconds);
+
+            setDigitalTime(`${formattedHours} : ${formattedMinutes} : ${formattedSeconds}`);
             setAmOrPm(`${hours > 12 ? "PM" : "AM"}`);
-            if (!soundplayed) {
+            
+            if (!muted) {
                 playSound();
             }
 
